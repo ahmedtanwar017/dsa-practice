@@ -118,3 +118,4 @@ function partition(arr, low, high) {
 
 quickSort(arr);
 console.log("Sorted array:", arr);
+

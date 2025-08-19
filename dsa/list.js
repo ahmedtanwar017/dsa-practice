@@ -64,30 +64,54 @@ list.prepend(5);
 list.append(10);
 list.append(20);
 list.append(30);
-list.print(); 
-
-
+list.print();
 
 function upperBound(arr, x, n) {
-    let low = 0, high = n - 1;
-    let ans = n;
+  let low = 0,
+    high = n - 1;
+  let ans = n;
 
-    while (low <= high) {
-        let mid = Math.floor((low + high) / 2);
-        // maybe an answer
-        if (arr[mid] > x) {
-            ans = mid;
-            //look for smaller index on the left
-            high = mid - 1;
-        }
-        else {
-            low = mid + 1; // look on the right
-        }
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+    // maybe an answer
+    if (arr[mid] > x) {
+      ans = mid;
+      //look for smaller index on the left
+      high = mid - 1;
+    } else {
+      low = mid + 1; // look on the right
     }
-    return ans;
+  }
+  return ans;
 }
 
-let arr = [3, 5, 8, 9, 15, 19];
-let n = 6, x = 9;
-let ind = upperBound(arr, x, n);
-console.log("The upper bound is the index:", ind);
+// let arr = [3, 5, 8, 9, 15, 19];
+// let n = 6,
+//   x = 9;
+// let ind = upperBound(arr, x, n);
+// console.log("The upper bound is the index:", ind);
+
+// git add .
+// git commit -m "Updated DSA solutions"
+// git push
+
+function searchInsert(arr, x) {
+  let n = arr.length;
+  let low = 0;
+  let high = n;
+  let ans = n;
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+    if (arr[mid] >= x) {
+      ans = mid;
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }return(ans)
+}
+
+let arr = [1, 2, 4, 7];
+let x = 6;
+let ind = searchInsert(arr, x);
+console.log("The index is:", ind);
