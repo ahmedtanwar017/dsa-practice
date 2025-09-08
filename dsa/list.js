@@ -1,117 +1,139 @@
 class Node {
   constructor(value) {
-    this.data = value;
+    this.value = value;
     this.next = null;
   }
 }
 
-class linkedlist {
+class LinkedList {
   constructor() {
     this.head = null;
     this.size = 0;
   }
 
-  isEmpty() {
-    return this.size === 0;
-  }
-  getSize() {
-    return this.size;
-  }
-  prepend(value) {
-    const node = new Node(value);
-    if (this.isEmpty()) {
-      this.head = node;
-    } else {
-      node.next = this.head;
-      this.head = node;
-    }
+  addFirst(value) {
+    let newNode = new Node(value);
+    newNode.next = this.head;
+    this.head = newNode;
     this.size++;
   }
-  append(value) {
-    const node = new Node(value);
-    if (this.isEmpty()) {
-      this.head = node;
+
+  addLast(value) {
+    let newNode = new Node(value);
+    if (!this.head) {
+      this.head = newNode;
     } else {
       let current = this.head;
-      while (current.next !== null) {
+      while (current.next) {
         current = current.next;
       }
-      current.next = node;
+      current.next = newNode;
     }
     this.size++;
+  }
+
+  remove(value) {
+    if (!this.head) return null;
+
+    if (this.head.value === value) {
+      this.head = this.head.next;
+      this.size--;
+      return;
+    }
+
+    let current = this.head;
+    let prev = null;
+
+    while (current && current.value !== value) {
+      prev = current;
+      current = current.next;
+    }
+
+    if (current) {
+      prev.next = current.next;
+      this.size--;
+    }
+  }
+
+  // Insert at a specific index
+  insert(value, index) {
+    if (index < 0 || index > this.size) {
+      console.log("Invalid index");
+      return;
+    }
+
+    if (index === 0) {
+      this.addFirst(value);
+    } else {
+      const newNode = new Node(value);
+      let prev = this.head;
+
+      // Traverse to the node before insertion
+      for (let i = 0; i < index - 1; i++) {
+        prev = prev.next;
+      }
+
+      newNode.next = prev.next; // Link new node to next
+      prev.next = newNode; // Link previous node to new node
+      this.size++;
+    }
+  }
+
+  removeAt(index) {
+    if (index < 0 || index >= this.size) {
+      console.log("Index out of bounds");
+      return null;
+    }
+
+    let removedNode;
+
+    // Case 1: Remove head
+    if (index === 0) {
+      removedNode = this.head;
+      this.head = this.head.next;
+    } else {
+      // Traverse to node before index
+      let current = this.head;
+      let previous = null;
+      let i = 0;
+
+      while (i < index) {
+        previous = current;
+        current = current.next;
+        i++;
+      }
+
+      removedNode = current;
+      previous.next = current.next;
+    }
+
+    this.size--;
+    return removedNode.value;
   }
 
   print() {
-    if (this.isEmpty()) {
-      console.log("List is empty");
-    } else {
-      let current = this.head;
-      let listValues = "";
-      while (current) {
-        listValues += current.data + " -> ";
-        current = current.next;
-      }
-      console.log(listValues + "null");
+    let current = this.head;
+    let list = "";
+    while (current) {
+      list += current.value + " -> ";
+      current = current.next;
     }
+    console.log(list + "null");
   }
 }
 
-const list = new linkedlist();
-console.log(list.isEmpty);
-list.prepend(10);
-list.prepend(20);
-list.prepend(5);
-list.append(10);
-list.append(20);
-list.append(30);
+// 🎯 Example usage
+let list = new LinkedList();
+list.addLast(10);
+list.addLast(20);
+list.addFirst(5);
+list.print(); // 5 -> 10 -> 20 -> null
+list.remove(40);
+list.removeAt(2)
+list.print(); // 5 -> 20 -> null
+list.insert(40, 1); // Insert 40 at the end
 list.print();
-
-function upperBound(arr, x, n) {
-  let low = 0,
-    high = n - 1;
-  let ans = n;
-
-  while (low <= high) {
-    let mid = Math.floor((low + high) / 2);
-    // maybe an answer
-    if (arr[mid] > x) {
-      ans = mid;
-      //look for smaller index on the left
-      high = mid - 1;
-    } else {
-      low = mid + 1; // look on the right
-    }
-  }
-  return ans;
-}
-
-// let arr = [3, 5, 8, 9, 15, 19];
-// let n = 6,
-//   x = 9;
-// let ind = upperBound(arr, x, n);
-// console.log("The upper bound is the index:", ind);
 
 // git add .
 // git commit -m "Updated DSA solutions"
 // git push
-
-function searchInsert(arr, x) {
-  let n = arr.length;
-  let low = 0;
-  let high = n;
-  let ans = n;
-  while (low <= high) {
-    let mid = Math.floor((low + high) / 2);
-    if (arr[mid] >= x) {
-      ans = mid;
-      high = mid - 1;
-    } else {
-      low = mid + 1;
-    }
-  }return(ans)
-}
-
-let arr = [1, 2, 4, 7];
-let x = 6;
-let ind = searchInsert(arr, x);
-console.log("The index is:", ind);

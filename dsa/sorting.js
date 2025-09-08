@@ -85,7 +85,7 @@ function merge(arr, st, mid, ed) {
 }
 
 // Example usage:
-const arr = [38, 27, 43, 3, 9, 82, 10];
+// const arr = [38, 27, 43, 3, 9, 82, 10];
 // mergeSort(arr, 0, arr.length - 1);
 // console.log("Sorted Array:", arr);
 
@@ -119,3 +119,23 @@ function partition(arr, low, high) {
 quickSort(arr);
 console.log("Sorted array:", arr);
 
+function searchInsert(arr, x) {
+  let n = arr.length;
+  let low = 0;
+  let high = n;
+  let ans = n;
+  while (low <= high) {
+    let mid = Math.floor((low + high) / 2);
+    if (arr[mid] >= x) {
+      ans = mid;
+      high = mid - 1;
+    } else {
+      low = mid + 1;
+    }
+  }return(ans)
+}
+
+let arr = [1, 2, 4, 7];
+let x = 6;
+let ind = searchInsert(arr, x);
+console.log("The index is:", ind);
