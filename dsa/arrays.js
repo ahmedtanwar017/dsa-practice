@@ -18,11 +18,13 @@ let oldarr = arr.filter(function(value){
 })
 console.log(oldarr);
 
-// Insertion
+// InsertionElement
 
+// insert at last
 arr[arr.length] = 50
 console.log(arr);
 
+// insert at beginning 
 let value = 50
 for(let i = arr.length;i > 0;i--){
     arr[i] = arr[i - 1]
@@ -35,4 +37,31 @@ for(let i = arr.length; i > index; i--){
     arr[i] = arr[i - 1]
 }
 arr[index] = value
+console.log(arr);
+
+// UpdateElement
+
+function UpdateElement(arr,index,elem){
+    if(index > arr.length || index < 0)
+        return false;
+    for(let i = index;i < arr.length - 1;i++){
+        arr[index] = elem
+    }
+    return arr
+}
+UpdateElement(arr,2,10)
+console.log(arr);
+
+// DeleteElement 
+
+function Deletion(arr,index){
+    if(index > arr.length || index < 0)
+        return false;
+    for(let i = index; i < arr.length - 1; i++){
+        arr[i] = arr[i + 1]
+    }
+    arr.length = arr.length -1;
+    return arr.length
+}
+Deletion(arr,2)
 console.log(arr);
