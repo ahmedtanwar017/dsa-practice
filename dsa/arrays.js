@@ -32,6 +32,7 @@ for(let i = arr.length;i > 0;i--){
 arr[0] = value
 console.log(arr);
 
+// insert Anywhere
 let index = prompt("Enter Index: ");
 for(let i = arr.length; i > index; i--){
     arr[i] = arr[i - 1]
