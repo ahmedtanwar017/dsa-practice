@@ -66,3 +66,27 @@ function Deletion(arr,index){
 }
 Deletion(arr,2)
 console.log(arr);
+
+// Accessing Elements in Array
+
+let fruits = ["Apple","Banana","Orange"];
+console.log((fruits[fruits.length - 1]));
+
+fruits[2] = "Chiku"
+console.log(fruits);
+
+// Traversing Elements in Arrat
+fruits.forEach(function(value){
+    console.log(value + " yummy");
+})
+
+fruits.forEach((element, index) => {
+    console.log(index, element);
+});
+
+let array = [1,2,3,4,5];
+
+function TwoPointer(){
+    let l = array[0]
+    let r = array.length - 1
+}
