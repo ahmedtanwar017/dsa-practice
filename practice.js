@@ -40,7 +40,6 @@ function ChkEvenOdd(num) {
 ChkEvenOdd(-2);
 
 function SmallestNum(a, b, c) {
-
   if (typeof a !== "number" || typeof b !== "number" || typeof c !== "number") {
     console.log("Invalid Number");
     return;
@@ -58,3 +57,30 @@ function SmallestNum(a, b, c) {
 }
 
 console.log(SmallestNum(-1, 3, 1));
+
+// Reverse a String
+function ReverseString(str) {
+  if(typeof str !== "string"){
+    throw new Error("Only String Allowed")
+  }
+  let rev = ""
+  let s = 0;
+  for (let i = str.length - 1; i >= s; i--) {
+      rev = rev + str[i]
+  }
+  return rev
+}
+console.log(ReverseString("array"));
+
+function Uturn(str){
+  if(typeof str !== "string"){
+    throw new Error("Only String Allowed")
+  }
+  const Split = str.split("");
+  const Reverse = Split.reverse()
+  const Result = Reverse.join("")
+  return Result
+}
+console.log(Uturn("Car"));
+
+
