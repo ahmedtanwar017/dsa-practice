@@ -36,6 +36,7 @@ function Sorting(array) {
 // console.log(TwoSum(8, array));
 
 let duplicate = [3, 3, 2, 2, 2, 3, 1, 1];
+// [1,1,2,2,2,3,3,3]
 function Duplicates(arr) {
   Sorting(arr);
   let i = 0;
