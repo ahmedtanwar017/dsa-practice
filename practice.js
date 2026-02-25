@@ -117,14 +117,53 @@
 // }
 // console.log(leapyear(2023));
 
-let arr = [1, 2, 2, 3];
+// let arr = [1, 2, 2, 3];
 
-let map = new Map();
+// let map = new Map();
 
-for (let num of arr) {
-  map.set(num, (map.get(num) || 0) + 1);
+// for (let num of arr) {
+//   map.set(num, (map.get(num) || 0) + 1);
+// }
+
+// for (let [key, value] of map) {
+//   console.log(`${key} is ${value}`);
+// }
+
+// function sumofdigits(num){
+//   const sum = num.toString().split("").map(Number)
+//   const total = sum[0] + sum[1]
+//   return total
+// }
+// console.log(sumofdigits(12));
+
+// function sum(num){
+//   let sum = num.toString().split("").map(Number)
+//   let total = 0
+//   for(let i = 0;i < sum.length; i++){
+//     total = sum[i] + total
+//   }
+//   return total
+// }
+// console.log(sum(1111));
+
+// function Tables(nums,range){
+//   let result = []
+//   for(let i = 1;i < range;i++){
+//     result.push(i * nums)
+//   }
+//   return result
+// }
+// console.log(Tables(5,15));
+
+let array = [1,2,3,4,5]
+function Maximum(arr){
+  let max = arr[0]
+  for(let i = 1;i < arr.length;i++){
+    if(arr[i] > max){
+      max = arr[i]
+    }
+  }
+  return max
 }
+console.log(Maximum(array));
 
-for (let [key, value] of map) {
-  console.log(`${key} is ${value}`);
-}
